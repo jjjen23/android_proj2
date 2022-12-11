@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -63,6 +64,7 @@ public class Calendar_Fragment extends Fragment {
         save_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(),"저장되었습니다.", Toast.LENGTH_SHORT).show();
                 saveDiary(fname);
                 str = contextEditText.getText().toString();
                 textView2.setText(str);
@@ -111,7 +113,6 @@ public class Calendar_Fragment extends Fragment {
                     contextEditText.setVisibility(View.VISIBLE);
                     textView2.setVisibility(View.INVISIBLE);
                     contextEditText.setText(str);
-
                     save_Btn.setVisibility(View.VISIBLE);
                     cha_Btn.setVisibility(View.INVISIBLE);
                     del_Btn.setVisibility(View.INVISIBLE);
@@ -122,6 +123,8 @@ public class Calendar_Fragment extends Fragment {
             del_Btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Toast.makeText(getActivity(),"삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
                     textView2.setVisibility(View.INVISIBLE);
                     contextEditText.setText("");
                     contextEditText.setVisibility(View.VISIBLE);

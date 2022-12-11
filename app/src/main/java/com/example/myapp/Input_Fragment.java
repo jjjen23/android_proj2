@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -76,6 +77,9 @@ public class Input_Fragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //버튼 클릭 시 토스트 메시지 띄우기
+                Toast.makeText(getActivity(),"저장되었습니다.", Toast.LENGTH_SHORT).show();
+
                 if (mMode == Constants.MODE_INSERT) {
                     savePeopleNote();
                 } else if(mMode == Constants.MODE_MODIFY){
@@ -91,6 +95,8 @@ public class Input_Fragment extends Fragment {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(),"삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
                 deletePeopleItem();
 
                 if (listener != null) {
