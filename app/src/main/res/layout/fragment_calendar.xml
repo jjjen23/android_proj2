@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Calendar_Fragment">
 
@@ -28,14 +28,15 @@
         android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
         app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
     <EditText
         android:layout_width="0dp"
         android:layout_height="116dp"
         android:inputType="textMultiLine"
-        android:ems="10"
+        android:ems="15"
         android:id="@+id/contextEditText"
         app:layout_constraintTop_toBottomOf="@+id/diaryTextView" android:layout_marginTop="16dp"
-        android:hint="내용을 입력하세요." android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+        android:hint="일정을 입력하세요." android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginRight="8dp" android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
         android:visibility="invisible"/>
@@ -53,7 +54,8 @@
 
     <Button
         android:text="저장"
-        android:layout_width="0dp"
+        android:background="@drawable/round_button"
+        android:layout_width="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
         android:id="@+id/save_Btn" android:layout_marginTop="16dp"
@@ -67,21 +69,23 @@
 
     <Button
         android:text="수정"
-        android:layout_width="180dp"
+        android:background="@drawable/round_button"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:id="@+id/cha_Btn"
         app:layout_constraintBaseline_toBaselineOf="@+id/save_Btn" app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp" android:layout_marginStart="10dp"
         app:layout_constraintEnd_toStartOf="@+id/del_Btn" android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp" android:visibility="invisible"/>
 
     <Button
         android:text="삭제"
-        android:layout_width="176dp"
+        android:background="@drawable/round_button"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:id="@+id/del_Btn"
         app:layout_constraintBaseline_toBaselineOf="@+id/cha_Btn" app:layout_constraintEnd_toEndOf="@+id/save_Btn"
-        android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:visibility="invisible"/>
+        android:layout_marginEnd="-80dp" android:layout_marginRight="8dp" android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

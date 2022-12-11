@@ -1,7 +1,9 @@
 package com.example.myapp;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
+
 public class Phonebook_Fragment extends Fragment {
 
+    private static final String TAG = "Phonebook_Fragment";
     RecyclerView recyclerView;
     PeopleAdapter adapter;
 
@@ -49,8 +55,12 @@ public class Phonebook_Fragment extends Fragment {
 
         initUI(rootView);
 
+        //데이터 로딩 하니까 앱이 꺼지네. 도대체 왜.. ㅜ
+        //loadPeopleListData();
+
         return rootView;
     }
+
     private void initUI(ViewGroup rootView){
 
         // 연락처 리스트 화면에서 작성(input)버튼 눌렀을 때 화면 이동
@@ -63,6 +73,7 @@ public class Phonebook_Fragment extends Fragment {
                 }
             }
         });
+
 
         /* 연락처 화면에서 검색(search) 버튼 눌렀을 때 화면 이동 ? 구현할것..?*/
 
@@ -84,8 +95,50 @@ public class Phonebook_Fragment extends Fragment {
             @Override
             public void onItemClick(PeopleAdapter.ViewHolder holder, View view, int position) {
                 PeopleItem item = adapter.getItem(position);
-                Toast.makeText(getContext(),"아이템 선택됨: "+item.getName(), Toast.LENGTH_LONG ).show();
+
+                Log.d(TAG, "아이템 선택됨 : " + item.get_id());
+
+                if (listener != null){
+                    listener.showFragment2(item);
+                }
             }
         });
     }
+
+
+    public int loadPeopleListData() {
+        Constants.println("loadPeopleListData called.");
+
+        String sql = "select _id, NAME, NUMBER from " + Database.TABLE_PHONE + "order by _id desc";
+
+        int recordCount = -1;
+
+        Database database = Database.getInstance(context);
+        if(database != null) {
+            Cursor outCursor = database.rawQuery(sql);
+            recordCount = outCursor.getCount();
+            Constants.println("record count : " + recordCount + "\n");
+
+
+            ArrayList<PeopleItem> items = new ArrayList<PeopleItem>();
+
+            for (int i=0; i <recordCount; i++ ){
+                outCursor.moveToNext();
+
+                int _id = outCursor.getInt(0);
+                String name = outCursor.getString(1);
+                String number = outCursor.getString(2);
+
+                items.add(new PeopleItem(_id, name, number));
+            }
+
+            outCursor.close();
+
+            adapter.setItems(items);
+            adapter.notifyDataSetChanged();
+        }
+
+        return recordCount;
+    }
+
 }

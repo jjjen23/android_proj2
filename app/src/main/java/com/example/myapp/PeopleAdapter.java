@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder>
-         implements OnPeopleItemClickListener {
+        implements OnPeopleItemClickListener {
 
     // adapter 에 들어갈 list
     ArrayList<PeopleItem> items = new ArrayList<>();
@@ -31,11 +31,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
     //아이템을 하나하나 보여주는(bind 되는) 함수
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-            PeopleItem item = items.get(position);
-
-            viewHolder.tv_name.setText(item.getName());
-
-            viewHolder.tv_number.setText(item.getPhone_num());
+        PeopleItem item = items.get(position);
+        viewHolder.setItem(item);
     }
 
     @Override
@@ -96,6 +93,11 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
                 }
             });
 
+            }
+
+            public void setItem(PeopleItem item){
+            tv_name.setText(item.getName());
+            tv_number.setText(item.getPhone_num());
         }
 
 

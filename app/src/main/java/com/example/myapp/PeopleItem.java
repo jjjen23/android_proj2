@@ -4,6 +4,7 @@ public class PeopleItem {
     int _id;
     String name;
     String phone_num;
+    //이미지 도 추가?
 
     public PeopleItem(int _id, String name, String phone_num) {
         this._id = _id;

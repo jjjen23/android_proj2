@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,9 @@ public class Calendar_Fragment extends Fragment {
         del_Btn = (Button) rootView.findViewById(R.id.del_Btn);
         cha_Btn = (Button) rootView.findViewById(R.id.cha_Btn);
         textView2 = (TextView) rootView.findViewById(R.id.textView2);
+        textView2.setTextSize(25);
+        textView2.setTextColor(Color.parseColor("#000000"));
+
         contextEditText = (EditText) rootView.findViewById(R.id.contextEditText);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
