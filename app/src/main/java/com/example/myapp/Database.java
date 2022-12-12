@@ -157,7 +157,7 @@ public class Database {
 
             // create index
             String CREATE_INDEX_SQL = "create index " + TABLE_PHONE + "_IDX ON " + TABLE_PHONE + "("
-                    + "CREATE_DATE"
+                    + "_id"
                     + ")";
             try {
                 db.execSQL(CREATE_INDEX_SQL);

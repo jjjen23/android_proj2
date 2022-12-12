@@ -56,7 +56,7 @@ public class Phonebook_Fragment extends Fragment {
         initUI(rootView);
 
         //데이터 로딩 하니까 앱이 꺼지네. 도대체 왜.. ㅜ
-        //loadPeopleListData();
+        loadPeopleListData();
 
         return rootView;
     }
@@ -109,7 +109,7 @@ public class Phonebook_Fragment extends Fragment {
     public int loadPeopleListData() {
         Constants.println("loadPeopleListData called.");
 
-        String sql = "select _id, NAME, NUMBER from " + Database.TABLE_PHONE + "order by _id desc";
+        String sql = "select _id, NAME, NUMBER from " + Database.TABLE_PHONE + " order by _id desc";
 
         int recordCount = -1;
 

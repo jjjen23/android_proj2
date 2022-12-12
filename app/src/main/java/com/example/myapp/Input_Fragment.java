@@ -149,7 +149,7 @@ public class Input_Fragment extends Fragment {
                 String name = edit_name.getText().toString();
                 String phone_num = edit_number.getText().toString();
 
-        String sql = "insert into" + Database.TABLE_PHONE +
+        String sql = "insert into " + Database.TABLE_PHONE +
                 "(NAME, NUMBER) values(" +
                 "'"+ name + "', " +
                 "'"+ phone_num + "')";
@@ -166,7 +166,7 @@ public class Input_Fragment extends Fragment {
                 String name = edit_name.getText().toString();
                 String phone_num = edit_number.getText().toString();
 
-                String sql = "update" + Database.TABLE_PHONE +
+                String sql = "update " + Database.TABLE_PHONE +
                         " set " +
                         "   NAME = '" + name + "'" +
                         "   ,NUMBER = '" + phone_num + "'" +
@@ -180,13 +180,12 @@ public class Input_Fragment extends Fragment {
         }
 
         //레코드 삭제
-
         private void deletePeopleItem () {
             Constants.println("deleteNote called.");
 
             if (item != null) {
                 // delete note
-                String sql = "delete from" + Database.TABLE_PHONE +
+                String sql = "delete from " + Database.TABLE_PHONE +
                         " where " +
                         "   _id = " + item._id;
 
